@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .btn-outline-secondary{position: relative;
+left: 50%;
+transform: translate(-50%, 0);}
+
+    .td_white {background-color: white}
+
+    .div_right{position: absolute;
+        right: 0;}
+</style>
+
+
+<table style="width: 90%; background-color: white">
+    <tr>
+        <td class="td_white">
+    <form class="login_form" method="post" style="max-width: 300px;
+    height: 65px;
+    align-content: center; margin-bottom:10px">
+        <button type="submit" class="btn btn-outline-secondary" name="preferences_test"> Пройти тест на предпочтения </button>
+    </form>
+            <form class="login_form" method="post" style="max-width: 300px;
+    height: 65px; align-content: center; background-color: #d7e8ff; ">
+        <button type="submit" class="btn btn-outline-secondary" name="news"> Новостная лента </button>
+    </form>
+        </td>
+
+        <td class="td_white"><p style="text-align: right; "><h4>{{user.name}} {{user.surname}}</h4></td>
+        <td class="td_white"><p style="text-align: right;"><img src=/static/image/{{user.profile_pic}} height=150px class="round"></p></td>
+    </tr>
+</table>
+
+
+
+<br>
+<h5 style="text-align:center; color:#8b8cba"> мои посты:</h5>
+<div class="col-md-2" style="display: inline;">
+<form class="login_form" method="post" style="align-content: center; width: 33%;
+float: left; margin-left:10px; margin-bottom:10px">
+    <h6 style="margin-left:30px">Новый пост</h6>
+    <div class="form-group">
+        <label for="classSelect"> С чем связан новый пост? </label>
+        <select class="form-control" id="classSelect" name="preference">
+          <option>Чтение книг</option>
+          <option>Спорт</option>
+          <option>Психология</option>
+          <option>Искусство</option>
+          <option>Сфера моды</option>
+            <option>Космос</option>
+            <option>Путешествия</option>
+            <option>ни с одной из перечисленных тем</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="photo">Приложите фотографию</label>
+        <input type="file" class="form-control-file" id="photo" name="image">
+    </div>
+    <br>
+     <h6 class="form-group">
+        <textarea class="form-control" id="post_text" rows="3" name="post_text"></textarea>
+     </h6>
+    <br>
+    <br>
+         <button type="submit" class="btn btn-success" name="new_post"> Опубликовать </button>
+
+</form>
+
+{% if user.posts %}
+{% for i in user.posts %}
+<form class="login_form" style="background-color: #e7eeff; width: 25%; margin-left: 10px; margin-bottom: 10px;
+float: left;">
+     <p style="text-align: right; margin-left: 10px; "><img src=/static/image/{{user.profile_pic}} height=50px class="round"></p>
+    <h6 style="text-align: right"> {{user.name}}</h6>
+    <br>
+    <div style="text-align: -webkit-right; color:#b9bfed"> Пост связан с темой: {{i.preferences}}</div>
+    <br>
+    <div >{{i.text}}</div>
+    {% if i.image != ' ':%}
+        {% if i.width_or_height == "height": %}
+            <p style="margin-left:30px"><img src=/static/image/{{i.image}} height=300px></p>
+        {% else %}
+            <p style="margin-left:30px"><img src=/static/image/{{i.image}} width=300px></p>
+        {% endif %}
+    {% endif %}
+    <div style="text-align: -webkit-right; color:grey"> Добавлен {{i.date.strftime("%w %b %Y %H:%M")}}</div>
+</form>
+{% endfor %}
+{% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

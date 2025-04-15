@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4 style="text-align: center"> Тест на предпочтения! </h4>
+<br>
+<form class="login_form" method="post">
+  <h6> Что Вам интересно? </h6>
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="reading" id="reading" value="reading">
+  <label class="form-check-label" for="reading">
+    Чтение книг
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="sport" id="sport" value="sport">
+  <label class="form-check-label" for="sport">
+    Спорт
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="psychology" id="psychology" value="psychology">
+  <label class="form-check-label" for="psychology">
+    Психология
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="art" id="art" value="art">
+  <label class="form-check-label" for="art">
+    Искусство
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="fashion" id="fashion" value="fashion">
+  <label class="form-check-label" for="fashion">
+    Мода
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="space" id="space" value="space">
+  <label class="form-check-label" for="space">
+    Изучение Вселенной
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="space" id="travelling" value="travelling">
+  <label class="form-check-label" for="space">
+    Путешествия
+  </label>
+</div>
+    <br>
+    <button type="submit" class="btn btn-success"> Готово </button>
+</form>
+{% endblock %}

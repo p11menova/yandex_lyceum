@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style> .btn-outline-secondary{position: relative;
+left: 50%;
+transform: translate(-50%, 0);}</style>
+<h4 class="alert alert-primary" role="alert" style="text-align: center">Новостная лента</h4>
+
+
+<table style="width:90%;">
+    <tr>
+    <td><form class="login_form" method="post" style="max-width: 350px; align-content: center; margin-left: 20px; background-color: #d7e8ff">
+
+    <div class="form-group">
+        <label for="classSelect"> Видеть новости только на тему: </label>
+        <br>
+            <select class="form-control" id="classSelect" name="theme">
+                <option>Чтение книг</option>
+                <option>Спорт</option>
+                <option>Психология</option>
+                <option>Искусство</option>
+                <option>Сфера моды</option>
+                <option>Космос</option>
+                <option>Путешествия</option>
+                <option></option>
+            </select>
+    </div>
+        {% if USER: %}
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="acceptRules" name="my_themes">
+                <label class="form-check-label" for="acceptRules">Мои предпочтения</label>
+            </div>
+        {% endif %}
+        <br>
+        <button type="submit" class="btn btn-outline-secondary" name="news_w_theme"> Показать! </button>
+</form></td>
+
+        <td style="text-align:center"><h5 style="color: #8b8cba">Поделись важными для тебя событиями!</h5></td>
+    <td><form class="login_form" method="post" style="width: 200px; height: 65px;  background-color: #d7e8ff; margin-left:75%; margin-bottom:10px">
+        <button type="submit" class="btn btn-outline-secondary" name="login"> Мой аккаунт </button></form>
+        {% if USER: %}
+            <form class="login_form" method="post" style="width: 200px; height: 65px;  background-color: #ffb8b5; margin-left:75%; margin-bottom:10px">
+        <button type="submit" class="btn btn-outline-secondary" name="exit"> Выйти из аккаунта </button></form>
+        {% endif %}
+    </td>
+
+</tr>
+</table>
+
+
+
+<br>
+<h4 class="alert alert-info" role="alert" style="text-align: center"> </h4>
+<br>
+{% if posts :%}
+    {% for post in posts :%}
+        <form class="login_form" style="background-color: #e7eeff;  width: 25%;
+float: left; margin-left:10px; margin-bottom:10px">
+     <p style="text-align: right; margin-left: 10px;"><img src=/static/image/{{post['profile_pic']}} height=50px class="round"></p>
+    <h6 style="text-align: right"> {{ post['author'] }}</h6>
+    <br>
+    <div style="text-align: -webkit-right; color:#b9bfed"> Пост связан с темой: {{post['post'].preferences}}</div>
+    <br>
+    <div>{{post['post'].text}}</div>
+    {% if post['post'].image != ' ':%}
+        {% if post['post'].width_or_height == "height": %}
+            <p style="margin-left:30px"><img src=/static/image/{{post['post'].image}} height=300px></p>
+        {% else :%}
+            <p style="margin-left:30px"><img src=/static/image/{{post['post'].image}} width=300px></p>
+        {% endif %}
+    {% endif %}
+    <div style="text-align: -webkit-right; color:grey"> Добавлен {{post['post'].date.strftime("%w %b %Y %H:%M")}}</div>
+        </form>
+
+
+    {% endfor %}
+
+
+{% else: %}
+<div style="margin-left: auto;
+    margin-right: auto;">Постов еще нет!</div>
+{%endif%}
+{% endblock %}

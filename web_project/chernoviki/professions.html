@@ -1,0 +1,67 @@
+
+<div class="form-group">
+<label for="classSelect">Какое у Вас образование?</label>
+<select class="form-control" id="classSelect" name="education">
+  <option>Начальное</option>
+  <option>Среднее</option>
+  <option>Высшее</option>
+</select>
+</div>
+<div class="form-group">
+<label for="form-check">Какие у Вас есть профессии?</label>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="research engineer" value="research engineer">
+  <label class="form-check-label" for="research engineer">
+    Инженер-исследователь
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="civil engineer" value="civil engineer">
+  <label class="form-check-label" for="civil engineer">
+    Инженер-строитель
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="drone pilot" value="drone pilot">
+  <label class="form-check-label" for="drone pilot">
+    Пилот дронов
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="doctor" value="doctor">
+  <label class="form-check-label" for="doctor">
+    Доктор
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="climatologist" value="climatologist">
+  <label class="form-check-label" for="climatologist">
+    Климатолог
+  </label>
+</div>
+
+<div class="form-group form-check">
+  <input class="form-check-input" type="checkbox" name="profession" id="navigator" value="navigator">
+  <label class="form-check-label" for="navigator">
+    Штурман
+  </label>
+</div>
+
+            </div>
+
+
+
+
+<div class="col-md-12" style="display: inline-flex; ">
+    <form class="login_form" method="post" style="max-width: 300px; height: 70px; align-content: center">
+        <button type="submit" class="btn btn-success" > Пройти тест на предпочтения </button>
+</form>
+   <p style="text-align: right; margin-left: 60px; display:inline-block"><img src=/static/image/{{user.profile_pic}} height=150px class="round"></p>
+   <h4 style="margin-right:70px">{{user.name}} {{user.surname}}</h4>
+
+</div>
